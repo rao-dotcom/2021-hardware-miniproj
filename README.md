@@ -31,6 +31,45 @@ NOTE: if you have trouble with the laptop crashing while writing or verifying th
 We have setup a few HDMI displays and USB keyboards in the senior design lab to share.
 Please let us know if we need to add more.
 
+### SSH connection
+
+To connect to the Raspberry Pi over SSH do one of the following.
+Be sure to pick a strong password for the Raspberry Pi, or the Pi will quickly become hacked as university networks are aggressively scanned for low security passwords.
+
+* external HDMI display: type "raspi-config" in the terminal, "Interface Options", "SSH" enable.
+* no display, via Ethernet cable to laptop: create a blank file named "ssh" in the "boot" partition of the SD card while it's in your laptop. This is done on Linux or MacOS from the "boot" directory by `touch ssh` or on Windows PowerShell by `New-Item ssh`
+
+To connect to the Raspberry Pi over SSH while plugged into the Pi with an Ethernet cable from your laptop, type the following in the terminal:
+
+```sh
+ssh pi@raspberrypi.local
+```
+
+If you can't connect, ensure your computer is connected to the Raspberry Pi via Ethernet cable directly.
+For example, on Windows type "ipconfig" and the response should include:
+
+```
+> ipconfig
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . :
+   Link-local IPv6 Address . . . . . : <hex-address>
+   Autoconfiguration IPv4 Address. . : 169.254.57.200
+   Subnet Mask . . . . . . . . . . . : 255.255.0.0
+   Default Gateway . . . . . . . . . :
+```
+
+The last digits will be different, the important part is the "169.254" indicating you have a "link-local" connection active.
+
+If you still can't get it working, use an HDMI display and keyboard to the Pi, which can be easier to get started when there's a connection problem.
+
+### Internet connection
+
+To enable the WiFi internet connection, from "raspi-config", "System Options", "Wireless LAN" setup the WiFi network.
+Note that if you choose to use university WiFi, your Kerberos password is visible to anyone with access to the Pi.
+So you might want to use an Ethernet cable to the internet or phone hotspot for the Pi.
+
 ## Part 2: Python sensor exercise
 
 (to be released September 6, 2021)
