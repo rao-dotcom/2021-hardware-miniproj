@@ -70,9 +70,29 @@ To enable the WiFi internet connection, from "raspi-config", "System Options", "
 Note that if you choose to use university WiFi, your Kerberos password is visible to anyone with access to the Pi.
 So you might want to use an Ethernet cable to the internet or phone hotspot for the Pi.
 
+You can check that the Pi is on the internet by typing in the Pi terminal (over SSH or HDMI+keyboard):
+
+```sh
+curl https://ident.me
+```
+
+that will give the public IP address of the Pi, if the public internet connection is up.
+
 ## Part 2: Python sensor exercise
 
-(to be released September 6, 2021)
+The commands in this section are all run on the Raspberry Pi, over SSH or HDMI+keyboard.
+
+Like most Linux systems, the Raspberry Pi comes with Python installed.
+Since we're going to be using system hardware drivers, we'll use system Python.
+Let's check that Python is working:
+
+```sh
+$ python3
+
+Python 3.7.3  ...
+```
+
+Most contemporary Python software required Python &ge; 3.7 at this time.
 
 ## Part 3: Wireless Sensor
 
