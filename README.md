@@ -26,7 +26,10 @@ via the installer to the SD card.
 Please use care that the installer refers to the path to the SD card.
 If your computer doesn't have a micro SD slot, consider buying an inexpensive USB to micro SD adapter or using another computer.
 
-NOTE: if you have trouble with the laptop crashing while writing or verifying the SD card, try temporarily turning off virus protection, especially on Windows.
+Notes:
+
+* if you have trouble with the laptop crashing while writing or verifying the SD card, try temporarily turning off virus protection, especially on Windows.
+* The Raspberry Pi 4 uses more power than prior generations. It might not operate correctly from laptop USB-C. We suggest using the Raspberry Pi 4 AC power adapter for stable power.
 
 We have setup a few HDMI displays and USB keyboards in the senior design lab to share.
 Please let us know if we need to add more.
@@ -81,10 +84,15 @@ that will give the public IP address of the Pi, if the public internet connectio
 ## Part 2: Python sensor exercise
 
 The commands in this section are all run on the Raspberry Pi, over SSH or HDMI+keyboard.
+Let's update the Raspberry Pi OS, as the OS releases only happen a few times a year.
+
+```sh
+sudo apt update && sudo apt upgrade
+```
 
 Like most Linux systems, the Raspberry Pi comes with Python installed.
 Since we're going to be using system hardware drivers, we'll use system Python.
-Let's check that Python is working:
+Check that Python is working:
 
 ```sh
 $ python3
@@ -92,7 +100,14 @@ $ python3
 Python 3.7.3  ...
 ```
 
-Most contemporary Python software required Python &ge; 3.7 at this time.
+Most contemporary Python software requires Python &ge; 3.7 at this time.
+Let's install Bluez, which is a Bluetooth library:
+
+```sh
+sudo apt install bluez bluez-hcidump libbluetooth-dev
+
+pip install --user pybluez
+```
 
 ## Part 3: Wireless Sensor
 
