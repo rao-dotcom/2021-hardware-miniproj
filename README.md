@@ -158,4 +158,17 @@ Discovery started
 
 ## Part 3: Wireless Sensor
 
-(to be released September 9, 2021)
+(more details to come September 9, 2021)
+
+Let's examine the possibility of detecting automobile, bicycle, and/or pedestrian activity in an area.
+Many people carry smartphones or have automobiles that beacon with Bluetooth.
+While more precise tracking requires multiple Bluetooth receivers, just using one Bluetooth receiver in our Raspberry Pi can give a sense of user activity in an area.
+
+What would you like to measure via Bluetooth activity in an area using a Raspberry Pi?
+Ideas include:
+
+* room occupancy trends
+* traffic patterns (congestion of automobiles, bikes, and/or pedestrians)
+
+Let discuss in class on Thursday, September 9, 2021 your ideas.
+Each team could measure something a little different if they choose.
