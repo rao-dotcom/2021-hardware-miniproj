@@ -26,6 +26,8 @@ via the installer to the SD card.
 Please use care that the installer refers to the path to the SD card.
 If your computer doesn't have a micro SD slot, consider buying an inexpensive USB to micro SD adapter or using another computer.
 
+NOTE: if you have trouble with the laptop crashing while writing or verifying the SD card, try temporarily turning off virus protection, especially on Windows.
+
 We have setup a few HDMI displays and USB keyboards in the senior design lab to share.
 Please let us know if we need to add more.
 
