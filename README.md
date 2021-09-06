@@ -115,6 +115,46 @@ python3 -m pip install --user pybluez gattlib
 
 We use "python3 -m pip" to avoid installing the deprecated Python 2 package.
 
+Let's check if the Bluetooth hardware is enabled.
+Let's reboot the Pi to ensure the driver updates are enabled:
+
+```sh
+sudo reboot
+```
+
+List the Bluetooth devices:
+
+```sh
+$ sudo bluetoothctl list
+
+Controller <hex-address> raspberrypi [default]
+```
+
+If nothing is listed, the Bluetooth hardware is not enabled.
+Try rebooting the Pi if this occurs.
+Also check that Bluetooth isn't blocked:
+
+```sh
+$ rfkill list all
+
+0: phy0: Wireless LAN
+        Soft blocked: no
+        Hard blocked: no
+1: hci0: Bluetooth
+        Soft blocked: no
+        Hard blocked: no
+```
+
+See what BLE devices are wirelessly visible near the Pi:
+
+```sh
+$ $ sudo bluetoothctl scan on
+Discovery started
+[CHG] Controller DC:A6:32:65:2B:47 Discovering: yes
+# ongoing stream of devices heard, should take only a few seconds to start seeing devices
+# if any Bluetooth devices are advertising nearby (within about 100 meters).
+```
+
 ## Part 3: Wireless Sensor
 
 (to be released September 9, 2021)
