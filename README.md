@@ -156,6 +156,16 @@ Discovery started
 # if any Bluetooth devices are advertising nearby (within about 100 meters).
 ```
 
+---
+
+The example Python script is run with "sudo" to access hardware like:
+
+```sh
+python3 ble_scan.py
+```
+
+The script can be enhanced by your team in Part 3 to log data to disk or the cloud, capturing Bluetooth activity vs. time to estimate human activity in a vicinity with the Raspberry Pi sitting somewhere.
+
 ## Part 3: Wireless Sensor
 
 (more details to come September 9, 2021)
