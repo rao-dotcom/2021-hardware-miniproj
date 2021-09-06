@@ -71,7 +71,10 @@ If you still can't get it working, use an HDMI display and keyboard to the Pi, w
 
 To enable the WiFi internet connection, from "raspi-config", "System Options", "Wireless LAN" setup the WiFi network.
 Note that if you choose to use university WiFi, your Kerberos password is visible to anyone with access to the Pi.
-So you might want to use an Ethernet cable to the internet or phone hotspot for the Pi.
+Additional ways to connect the Pi to the internet include:
+
+* Ethernet cable to an internet-connected wall jack
+* WiFi hotspot
 
 You can check that the Pi is on the internet by typing in the Pi terminal (over SSH or HDMI+keyboard):
 
@@ -101,13 +104,16 @@ Python 3.7.3  ...
 ```
 
 Most contemporary Python software requires Python &ge; 3.7 at this time.
-Let's install Bluez, which is a Bluetooth library:
+Let's install PyBluez, a Bluetooth library:
 
 ```sh
-sudo apt install bluez bluez-hcidump libbluetooth-dev
+sudo apt install bluez bluez-hcidump libbluetooth-dev libglib2.0-dev libboost-python-dev libboost-thread-dev
+# drivers needed by PyBluez
 
-pip install --user pybluez
+python3 -m pip install --user pybluez gattlib
 ```
+
+We use "python3 -m pip" to avoid installing the deprecated Python 2 package.
 
 ## Part 3: Wireless Sensor
 
