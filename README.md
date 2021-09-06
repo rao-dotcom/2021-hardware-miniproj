@@ -110,9 +110,10 @@ Let's install PyBluez, a Bluetooth library:
 sudo apt install bluez bluez-hcidump libbluetooth-dev libglib2.0-dev libboost-python-dev libboost-thread-dev
 # drivers needed by PyBluez
 
-python3 -m pip install --user pybluez gattlib
+sudo python3 -m pip install pybluez gattlib
 ```
 
+Normally we avoid using "sudo" to install Python packages, but in this case we will also need to run Python with "sudo" to access hardware.
 We use "python3 -m pip" to avoid installing the deprecated Python 2 package.
 
 Let's check if the Bluetooth hardware is enabled.
