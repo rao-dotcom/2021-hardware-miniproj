@@ -32,7 +32,7 @@ def scan(iface: str) -> str:
     use command line to scan for Wifi networks
     """
     cmd = ["iwlist", iface, "scan"]
-    return subprocess.check_output(cmd, text=True)
+    return subprocess.check_output(cmd, text=True, timeout=15)
 
 
 def parse(raw: str) -> dict[str, dict[str, str]]:
