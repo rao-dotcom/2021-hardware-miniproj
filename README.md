@@ -5,9 +5,9 @@ Fall 2021 ECE Senior Capstone miniproject
 This project will be done in multiple steps.
 The first part is the setup of the Raspberry Pi hardware.
 
-The second part is an exercise to gain familiarity with Python and embedded sensors. It will require the Raspberry Pi OS to be working. It will be released Monday, September 6, 2021.
+The second part is an exercise to gain familiarity with Python and embedded sensors. It will require the Raspberry Pi OS to be working.
 
-The third part using the Raspberry Pi as a wireless sensor will be released Thursday, September 9, 2021.
+The third part is using the Raspberry Pi as a wireless sensor with WiFi and Bluetooth.
 
 ## Part 1: setup Raspberry Pi
 
@@ -159,7 +159,7 @@ Discovery started
 
 ---
 
-The example Python script is run with "sudo" to access hardware like:
+The example [ble_scan.py](./ble_scan.py) Python script is run with "sudo" to access hardware like:
 
 ```sh
 python3 ble_scan.py
@@ -168,8 +168,6 @@ python3 ble_scan.py
 The script can be enhanced by your team in Part 3 to log data to disk or the cloud, capturing Bluetooth activity vs. time to estimate human activity in a vicinity with the Raspberry Pi sitting somewhere.
 
 ## Part 3: Wireless Sensor
-
-(more details to come September 9, 2021)
 
 Let's examine the possibility of detecting automobile, bicycle, and/or pedestrian activity in an area.
 Many people carry smartphones or have automobiles that beacon with Bluetooth.
@@ -183,3 +181,21 @@ Ideas include:
 
 Let discuss in class on Thursday, September 9, 2021 your ideas.
 Each team could measure something a little different if they choose.
+
+### General approach
+
+Consider using a for loop to scan for BLE devices.
+You'll find that some devices are always visible--they are probably fixed beacons, TVs, speakers, desktop computers, etc.
+Devices like headphones, modern automobiles, etc. come and go as they move close to and away from the Raspberry Pi.
+
+An issue with automobiles is not every modern automobile beacons BLE after its paired, or may only beacon during user setup interactions.
+Let's use WiFi hotspots for detecting vehicles instead.
+
+### WiFi hotspot detection in automobiles
+
+Automobile hotspots have a specified range typically up to about 20 meters from the vehicle.
+We are close enough to the road to be able to detect the vehicle WiFi hotspot as they travel past.
+A typical WiFi beacon interval is 100 milliseconds.
+
+The "iw" wireless tool is available on many Linux systems including the Raspberry Pi OS.
+We use this tool and parse its output in [wifi_scan.py](./wifi_scan.py) to detect WiFi hotspots, such as exist in modern automobiles.
