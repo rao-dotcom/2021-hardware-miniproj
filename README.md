@@ -87,6 +87,7 @@ that will give the public IP address of the Pi, if the public internet connectio
 ## Part 2: Python sensor exercise
 
 The commands in this section are all run on the Raspberry Pi, over SSH or HDMI+keyboard.
+The PyBluez package requires a Linux computer such as the Raspberry Pi for full functionality including BLE.
 Let's update the Raspberry Pi OS, as the OS releases only happen a few times a year.
 
 ```sh

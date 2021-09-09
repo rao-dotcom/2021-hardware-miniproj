@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Example of scanning Bluetooth Low Energy (BLE) devices
+Example of scanning Bluetooth Low Energy (BLE) devices.
+Requires a Linux computer due to gattlib underlying BLE scanning requiring Glib.
 """
 
 import argparse
