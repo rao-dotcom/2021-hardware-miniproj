@@ -12,6 +12,7 @@ from pathlib import Path
 import json
 
 import numpy as np
+import pandas
 import xarray
 from matplotlib.pyplot import show
 
@@ -30,7 +31,7 @@ def load(filename) -> xarray.DataArray:
     data = xarray.DataArray(
         dims=["time", "cell", "params"],
         coords=[
-            ("time", list(ddata.keys())),
+            ("time", pandas.to_datetime(list(ddata.keys()))),
             ("cell", range(MAX_SSID)),
             ("params", ["essid", "bssid", "dbm"]),
         ],
