@@ -52,7 +52,9 @@ This is done on Linux or MacOS from the "boot" directory by "touch ssh" or on Wi
 To enable WiFi, create a file in the "boot" directory of the SD card
 [wpa_supplicant.conf](https://www.raspberrypi.org/documentation/configuration/wireless/wpa_supplicant.md) with the needed WiFi parameters (country code is "US").
 
-To connect to the Raspberry Pi over SSH while plugged into the Pi with an Ethernet cable from your laptop, type the following in the terminal:
+---
+
+To connect to the Raspberry Pi over SSH while plugged into the Pi with an Ethernet cable from your laptop or on the same WiFi network, type the following in the terminal:
 
 ```sh
 ssh pi@raspberrypi.local
@@ -195,6 +197,7 @@ Each team could measure something a little different if they choose.
 ### General approach
 
 Consider using a for loop to scan for BLE devices.
+The [wifi_scan.py](./wifi_scan.py) example shows a way to log data to a JSON file over time, near the bottom of the Python script.
 You'll find that some devices are always visible--they are probably fixed beacons, TVs, speakers, desktop computers, etc.
 Devices like headphones, modern automobiles, etc. come and go as they move close to and away from the Raspberry Pi.
 
@@ -209,3 +212,7 @@ A typical WiFi beacon interval is 100 milliseconds.
 
 The "iw" wireless tool is available on many Linux systems including the Raspberry Pi OS.
 We use this tool and parse its output in [wifi_scan.py](./wifi_scan.py) to detect WiFi hotspots, such as exist in modern automobiles.
+
+---
+
+Note, if you wish to measure/do something else with the Pi, please let us know and we'll discuss.
