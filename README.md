@@ -50,7 +50,26 @@ If using guest network, you'll need to login to the WiFi network with a web brow
 Create a blank file named "ssh" in the "boot" partition of the SD card while it's in your laptop.
 This is done on Linux or MacOS from the "boot" directory by "touch ssh" or on Windows PowerShell by "New-Item ssh"
 To enable WiFi, create a file in the "boot" directory of the SD card
-[wpa_supplicant.conf](https://www.raspberrypi.org/documentation/configuration/wireless/wpa_supplicant.md) with the needed WiFi parameters (country code is "US").
+[wpa_supplicant.conf](https://www.raspberrypi.org/documentation/configuration/wireless/wpa_supplicant.md)
+with the needed WiFi parameters (country code is "US").
+
+Example wpa_supplicant.conf:
+
+```init
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+        ssid="myHomeNetwork"
+        psk="abc123"
+}
+
+network={
+        ssid="MyPhoneHotspot"
+        psk="xyz789"
+}
+```
 
 ---
 
@@ -96,10 +115,9 @@ curl https://ident.me
 
 that will give the public IP address of the Pi, if the public internet connection is up.
 
-## Part 2: Python sensor exercise
+### Python setup
 
 The commands in this section are all run on the Raspberry Pi, over SSH or HDMI+keyboard.
-The PyBluez package requires a Linux computer such as the Raspberry Pi for full functionality including BLE.
 Let's update the Raspberry Pi OS, as the OS releases only happen a few times a year.
 
 ```sh
@@ -117,67 +135,12 @@ Python 3.7.3  ...
 ```
 
 Most contemporary Python software requires Python &ge; 3.7 at this time.
-Let's install PyBluez, a Bluetooth library:
 
-```sh
-sudo apt install bluez bluez-hcidump libbluetooth-dev libglib2.0-dev libboost-python-dev libboost-thread-dev
-# drivers needed by PyBluez
+## Part 2: Python exercise
 
-sudo python3 -m pip install pybluez gattlib
-```
+You can try the Bluetooth [ble_scan.py](./ble_scan.py) and/or WiFi examples [wifi_scan.py](./wifi_scan.py) in this project on the Raspberry Pi.
 
-Normally we avoid using "sudo" to install Python packages, but in this case we will also need to run Python with "sudo" to access hardware.
-We use "python3 -m pip" to avoid installing the deprecated Python 2 package.
-
-Let's check if the Bluetooth hardware is enabled.
-Let's reboot the Pi to ensure the driver updates are enabled:
-
-```sh
-sudo reboot
-```
-
-List the Bluetooth devices:
-
-```sh
-$ sudo bluetoothctl list
-
-Controller <hex-address> raspberrypi [default]
-```
-
-If nothing is listed, the Bluetooth hardware is not enabled.
-Try rebooting the Pi if this occurs.
-Also check that Bluetooth isn't blocked:
-
-```sh
-$ rfkill list all
-
-0: phy0: Wireless LAN
-        Soft blocked: no
-        Hard blocked: no
-1: hci0: Bluetooth
-        Soft blocked: no
-        Hard blocked: no
-```
-
-See what BLE devices are wirelessly visible near the Pi:
-
-```sh
-$ $ sudo bluetoothctl scan on
-Discovery started
-[CHG] Controller DC:A6:32:65:2B:47 Discovering: yes
-# ongoing stream of devices heard, should take only a few seconds to start seeing devices
-# if any Bluetooth devices are advertising nearby (within about 100 meters).
-```
-
----
-
-The example [ble_scan.py](./ble_scan.py) Python script is run with "sudo" to access hardware like:
-
-```sh
-python3 ble_scan.py
-```
-
-The script can be enhanced by your team in Part 3 to log data to disk or the cloud, capturing Bluetooth activity vs. time to estimate human activity in a vicinity with the Raspberry Pi sitting somewhere.
+I have made notes for [Bluetooth](./Bluetooth.md) as it requires additional packages.
 
 ## Part 3: Wireless Sensor
 
@@ -210,8 +173,22 @@ Automobile hotspots have a specified range typically up to about 20 meters from 
 We are close enough to the road to be able to detect the vehicle WiFi hotspot as they travel past.
 A typical WiFi beacon interval is 100 milliseconds.
 
-The "iw" wireless tool is available on many Linux systems including the Raspberry Pi OS.
+The
+[iw wireless toolkit](https://wireless.wiki.kernel.org/en/users/documentation/iw)
+is available on many Linux systems including the Raspberry Pi OS.
 We use this tool and parse its output in [wifi_scan.py](./wifi_scan.py) to detect WiFi hotspots, such as exist in modern automobiles.
+
+```sh
+sudo python3 wifi_scan.py ~/data -N 100
+# logs data to ~/data and scans 100 times
+```
+
+copy this file to your laptop, perhaps using
+[SCP](https://en.wikipedia.org/wiki/Secure_copy_protocol):
+
+```sh
+scp pi@raspberrypi.local:~/data/*.json .
+```
 
 ---
 
