@@ -65,7 +65,7 @@ if __name__ == "__main__":
     P.add_argument("logpath", help="directory to write JSON output to", default=".")
     args = P.parse_args()
 
-    FMT = "YYYY-MM-DDTHH_MM_SS"
+    FMT = "%Y-%m-%dT%H_%M_%S"
 
     print(f"Wifi scan: {args.N} loops")
 
