@@ -7,6 +7,7 @@ iwlist is part of the Linux iw suite
 from __future__ import annotations
 import pprint
 import re
+import logging
 import subprocess
 import argparse
 import datetime
@@ -96,13 +97,19 @@ if __name__ == "__main__":
         aps = parse(raw)
         pprint.pprint(aps)
 
+        if not aps:
+            logging.error(f"no data recorded {now}")
+            time.sleep(1)
+            continue
+
         if logfile.is_file():
             jstr = logfile.read_text()
             dat_all = json.loads(jstr)
 
         dat_all[now] = aps
 
-        jstr = json.dumps(dat_all)
+        jstr = json.dumps(dat_all) + "\n"
+        # we add a line ending so the data isn't all on one line for all times
         logfile.write_text(jstr)
 
         # try not to overwhelm the iw command with too many scans
