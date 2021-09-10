@@ -72,7 +72,10 @@ if __name__ == "__main__":
 
     now = datetime.datetime.now().strftime(FMT)
 
-    logfile = Path(args.logpath).expanduser() / ("wifi_" + now + ".json")
+    logpath = Path(args.logpath).expanduser()
+    logpath.mkdir(parents=True, exist_ok=True)
+    logfile = logpath / ("wifi_" + now + ".json")
+    print("Logging data to", logfile)
 
     dat_all = {}
     jstr = ""
@@ -81,7 +84,6 @@ if __name__ == "__main__":
         now = datetime.datetime.now().strftime(FMT)
 
         raw = scan(iface=args.interface)
-        # raw = open("input.txt").read()
 
         aps = parse(raw)
         pprint.pprint(aps)
