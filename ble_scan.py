@@ -9,7 +9,11 @@ from bluetooth.ble import DiscoveryService
 
 p = argparse.ArgumentParser(description="BLE scanner")
 p.add_argument(
-    "timeout", help="number of seconds to scan for BLE devices", nargs="?", type=int, default=5
+    "timeout",
+    help="number of seconds to scan for BLE devices",
+    nargs="?",
+    type=int,
+    default=5,
 )
 P = p.parse_args()
 

@@ -24,7 +24,9 @@ dataRe = [
     re.compile(
         r"^Quality=(?P<signal_quality>\d+)/(?P<signal_total>\d+)\s+Signal level=(?P<signal_level_dBm>.+) d.+$"
     ),
-    re.compile(r"^Signal level=(?P<signal_quality>\d+)/(?P<signal_total>\d+).*$"),
+    re.compile(
+        r"^Signal level=(?P<signal_quality>\d+)/(?P<signal_total>\d+).*$"
+    ),
 ]
 
 
@@ -62,8 +64,12 @@ def parse(raw: str) -> dict[str, dict[str, str]]:
 if __name__ == "__main__":
     P = argparse.ArgumentParser(description="WiFi scanner using iw")
     P.add_argument("-N", default=10, type=int, help="number of scans")
-    P.add_argument("-i", "--interface", default="wlan0", help="WiFi interface to scan")
-    P.add_argument("logpath", help="directory to write JSON output to", default=".")
+    P.add_argument(
+        "-i", "--interface", default="wlan0", help="WiFi interface to scan"
+    )
+    P.add_argument(
+        "logpath", help="directory to write JSON output to", default="."
+    )
     args = P.parse_args()
 
     FMT = "%Y-%m-%dT%H_%M_%S"
