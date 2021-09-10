@@ -7,7 +7,7 @@ The first part is the setup of the Raspberry Pi hardware.
 
 The second part is an exercise to gain familiarity with Python and embedded sensors. It will require the Raspberry Pi OS to be working.
 
-The third part is using the Raspberry Pi as a wireless sensor with WiFi and Bluetooth.
+The third part is using the Raspberry Pi as a wireless sensor with WiFi and/or Bluetooth.
 
 ## Part 1: setup Raspberry Pi
 
@@ -29,18 +29,28 @@ If your computer doesn't have a micro SD slot, consider buying an inexpensive US
 Notes:
 
 * if you have trouble with the laptop crashing while writing or verifying the SD card, try temporarily turning off virus protection, especially on Windows.
-* The Raspberry Pi 4 uses more power than prior generations. It might not operate correctly from laptop USB-C. We suggest using the Raspberry Pi 4 AC power adapter for stable power.
+* The Raspberry Pi 4 uses more power than prior generations. It might not operate correctly if powered from laptop USB-C. We suggest using the Raspberry Pi 4 AC power adapter for stable power.
 
 We have setup a few HDMI displays and USB keyboards in the senior design lab to share.
 Please let us know if we need to add more.
 
 ### SSH connection
 
-To connect to the Raspberry Pi over SSH do one of the following.
+To connect to the Raspberry Pi over SSH do one of the following connection methods.
 Be sure to pick a strong password for the Raspberry Pi, or the Pi will quickly become hacked as university networks are aggressively scanned for low security passwords.
 
-* external HDMI display: type "raspi-config" in the terminal, "Interface Options", "SSH" enable.
-* no display, via Ethernet cable to laptop: create a blank file named "ssh" in the "boot" partition of the SD card while it's in your laptop. This is done on Linux or MacOS from the "boot" directory by `touch ssh` or on Windows PowerShell by `New-Item ssh`
+#### external HDMI display
+
+Type "raspi-config" in the Pi terminal, "Interface Options", "SSH" enable.
+Then similarly setup the WiFi network, to your phone or laptop WiFi hotspot or the university Guest WiFi network.
+If using guest network, you'll need to login to the WiFi network with a web browser from the Pi.
+
+#### no display, via Ethernet cable to laptop
+
+Create a blank file named "ssh" in the "boot" partition of the SD card while it's in your laptop.
+This is done on Linux or MacOS from the "boot" directory by "touch ssh" or on Windows PowerShell by "New-Item ssh"
+To enable WiFi, create a file in the "boot" directory of the SD card
+[wpa_supplicant.conf](https://www.raspberrypi.org/documentation/configuration/wireless/wpa_supplicant.md) with the needed WiFi parameters (country code is "US").
 
 To connect to the Raspberry Pi over SSH while plugged into the Pi with an Ethernet cable from your laptop, type the following in the terminal:
 
