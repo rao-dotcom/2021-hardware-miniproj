@@ -11,6 +11,7 @@ import subprocess
 import argparse
 import datetime
 import json
+import time
 from pathlib import Path
 
 
@@ -93,3 +94,6 @@ if __name__ == "__main__":
 
         jstr = json.dumps(dat_all)
         logfile.write_text(jstr)
+
+        # try not to overwhelm the iw command with too many scans
+        time.sleep(1)
