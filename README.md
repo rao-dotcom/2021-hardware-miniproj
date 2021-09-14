@@ -2,6 +2,8 @@
 
 Fall 2021 ECE Senior Capstone miniproject
 
+[Report/Assignment](./Assignment.md)
+
 This project will be done in multiple steps.
 The first part is the setup of the Raspberry Pi hardware.
 
