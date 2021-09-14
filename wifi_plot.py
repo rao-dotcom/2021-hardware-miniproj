@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 import json
+from datetime import datetime
 
 import numpy as np
 import pandas
@@ -17,6 +18,7 @@ import xarray
 from matplotlib.pyplot import show
 
 MAX_SSID = 100
+FMT = "%Y-%m-%dT%H_%M_%S"
 
 
 def load(filename) -> xarray.DataArray:
@@ -31,7 +33,10 @@ def load(filename) -> xarray.DataArray:
     data = xarray.DataArray(
         dims=["time", "cell", "params"],
         coords=[
-            ("time", pandas.to_datetime(list(ddata.keys()))),
+            (
+                "time",
+                pandas.to_datetime(list(ddata.keys()), format=FMT),
+            ),
             ("cell", range(MAX_SSID)),
             ("params", ["essid", "bssid", "dbm"]),
         ],
@@ -40,7 +45,8 @@ def load(filename) -> xarray.DataArray:
 
     for time, bssids in ddata.items():
         for i, (bssid, v) in enumerate(bssids.items()):
-            data.loc[time][i] = [v["essid"], bssid, v["signal_level_dBm"]]
+            t = datetime.strptime(time, FMT)
+            data.loc[t][i] = [v["essid"], bssid, v["signal_level_dBm"]]
 
     return data
 
