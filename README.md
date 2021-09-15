@@ -9,7 +9,7 @@ The first part is the setup of the Raspberry Pi hardware.
 
 The second part is an exercise to gain familiarity with Python and embedded sensors. It will require the Raspberry Pi OS to be working.
 
-The third part is using the Raspberry Pi as a wireless sensor with WiFi and/or Bluetooth.
+The third part is using the Raspberry Pi as a wireless sensor with WiFi (suggested) and/or Bluetooth.
 
 ## Part 1: setup Raspberry Pi
 
@@ -140,17 +140,17 @@ Most contemporary Python software requires Python &ge; 3.7 at this time.
 
 ## Part 2: Python exercise
 
-You can try the Bluetooth [ble_scan.py](./ble_scan.py) and/or WiFi examples [wifi_scan.py](./wifi_scan.py) in this project on the Raspberry Pi.
+You can try the Bluetooth [ble_scan.py](./ble_scan.py) and/or WiFi (suggested) examples [wifi_scan.py](./wifi_scan.py) in this project on the Raspberry Pi.
 
 I have made notes for [Bluetooth](./Bluetooth.md) as it requires additional packages.
 
 ## Part 3: Wireless Sensor
 
 Let's examine the possibility of detecting automobile, bicycle, and/or pedestrian activity in an area.
-Many people carry smartphones or have automobiles that beacon with Bluetooth.
-While more precise tracking requires multiple Bluetooth receivers, just using one Bluetooth receiver in our Raspberry Pi can give a sense of user activity in an area.
+Many people carry smartphones or have automobiles that beacon with Bluetooth and/or WiFi.
+While more precise tracking requires multiple radio receivers, just using one receiver in our Raspberry Pi can give a sense of user activity in an area.
 
-What would you like to measure via Bluetooth activity in an area using a Raspberry Pi?
+What would you like to measure via WiFi/Bluetooth activity in an area using a Raspberry Pi?
 Ideas include:
 
 * room occupancy trends
@@ -161,13 +161,12 @@ Each team could measure something a little different if they choose.
 
 ### General approach
 
-Consider using a for loop to scan for BLE devices.
 The [wifi_scan.py](./wifi_scan.py) example shows a way to log data to a JSON file over time, near the bottom of the Python script.
 You'll find that some devices are always visible--they are probably fixed beacons, TVs, speakers, desktop computers, etc.
 Devices like headphones, modern automobiles, etc. come and go as they move close to and away from the Raspberry Pi.
 
 An issue with automobiles is not every modern automobile beacons BLE after its paired, or may only beacon during user setup interactions.
-Let's use WiFi hotspots for detecting vehicles instead.
+Let's use WiFi hotspots for detecting vehicles instead, and use [wifi_plot.py](./wifi_plot.py) to plot the data.
 
 ### WiFi hotspot detection in automobiles
 
