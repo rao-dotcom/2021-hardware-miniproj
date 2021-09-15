@@ -4,16 +4,12 @@ Fall 2021 ECE Senior Capstone miniproject
 
 [Report/Assignment](./Assignment.md)
 
-This project will be done in multiple steps.
-
 First, [setup the Raspberry Pi hardware and operating system](./RaspberryPiSetup.md) Raspberry Pi OS.
-
----
 
 Gain familiarity with Python and embedded sensors using the Raspberry Pi OS.
 You can try the [Bluetooth](./bluetooth/) (suggest WiFi instead) and/or WiFi (suggested) examples [wifi_scan.py](./wifi_scan.py) in this project on the Raspberry Pi.
 
-Finally, collect and plot data using the Raspberry Pi as a wireless sensor.
+Finally, **collect and plot data using the Raspberry Pi as a wireless sensor**.
 
 **NOTE**: There isn't so much easily scannable Bluetooth activity from automobiles. It's probably easiest to use WiFi example instead from the Senior Design lab or other room near a window facing the highway. WiFi range is up to about 20 meters, but can be longer.
 
