@@ -144,6 +144,8 @@ You can try the Bluetooth [ble_scan.py](./ble_scan.py) and/or WiFi (suggested) e
 
 I have made notes for [Bluetooth](./Bluetooth.md) as it requires additional packages.
 
+**NOTE**: What we've discovered is that there isn't so much Bluetooth activity from automobiles. It's probably easiest to use WiFi example instead from the Senior Design lab or other room near a window facing the highway. WiFi range is up to about 20 meters, but can be longer.
+
 ## Part 3: Wireless Sensor
 
 Let's examine the possibility of detecting automobile, bicycle, and/or pedestrian activity in an area.
