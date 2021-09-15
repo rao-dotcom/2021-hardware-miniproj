@@ -161,12 +161,26 @@ Each team could measure something a little different if they choose.
 
 ### General approach
 
-The [wifi_scan.py](./wifi_scan.py) example shows a way to log data to a JSON file over time, near the bottom of the Python script.
+The [wifi_scan.py](./wifi_scan.py)
+example shows a way to log data to a JSON file over time, near the bottom of the Python script.
 You'll find that some devices are always visible--they are probably fixed beacons, TVs, speakers, desktop computers, etc.
 Devices like headphones, modern automobiles, etc. come and go as they move close to and away from the Raspberry Pi.
 
 An issue with automobiles is not every modern automobile beacons BLE after its paired, or may only beacon during user setup interactions.
 Let's use WiFi hotspots for detecting vehicles instead, and use [wifi_plot.py](./wifi_plot.py) to plot the data.
+
+wifi_plot.py needs to be **run on your laptop**, as the Raspberry Pi has too old Python library versions to run the plots.
+On your laptop, install the plotting packages like:
+
+```sh
+python3 -m pip install numpy xarray matplotlib
+```
+
+If you need to install Python itself, this is done like:
+
+* Windows: via [Microsoft Store](https://www.microsoft.com/en-us/p/python-39/9p7qfqmjrfp7) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html#windows-installers)
+* MacOS: via [Miniconda](https://docs.conda.io/en/latest/miniconda.html#macosx-installers)
+* Linux: already installed on most Linux systems, or [Miniconda](https://docs.conda.io/en/latest/miniconda.html#linux-installers)
 
 ### WiFi hotspot detection in automobiles
 
