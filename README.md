@@ -9,7 +9,7 @@ The first part is the setup of the Raspberry Pi hardware.
 
 The second part is an exercise to gain familiarity with Python and embedded sensors. It will require the Raspberry Pi OS to be working.
 
-The third part is using the Raspberry Pi as a wireless sensor with WiFi (suggested) and/or Bluetooth.
+The third part is using the Raspberry Pi as a wireless sensor.
 
 ## Part 1: setup Raspberry Pi
 
@@ -140,19 +140,17 @@ Most contemporary Python software requires Python &ge; 3.7 at this time.
 
 ## Part 2: Python exercise
 
-You can try the Bluetooth [ble_scan.py](./ble_scan.py) and/or WiFi (suggested) examples [wifi_scan.py](./wifi_scan.py) in this project on the Raspberry Pi.
-
-I have made notes for [Bluetooth](./Bluetooth.md) as it requires additional packages.
+You can try the [Bluetooth](./bluetooth/) (suggest WiFi instead) and/or WiFi (suggested) examples [wifi_scan.py](./wifi_scan.py) in this project on the Raspberry Pi.
 
 **NOTE**: What we've discovered is that there isn't so much Bluetooth activity from automobiles. It's probably easiest to use WiFi example instead from the Senior Design lab or other room near a window facing the highway. WiFi range is up to about 20 meters, but can be longer.
 
 ## Part 3: Wireless Sensor
 
 Let's examine the possibility of detecting automobile, bicycle, and/or pedestrian activity in an area.
-Many people carry smartphones or have automobiles that beacon with Bluetooth and/or WiFi.
+Many people carry smartphones or have automobiles that beacon wireless signals.
 While more precise tracking requires multiple radio receivers, just using one receiver in our Raspberry Pi can give a sense of user activity in an area.
 
-What would you like to measure via WiFi/Bluetooth activity in an area using a Raspberry Pi?
+What would you like to measure via wireless activity in an area using a Raspberry Pi?
 Ideas include:
 
 * room occupancy trends

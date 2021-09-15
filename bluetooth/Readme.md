@@ -1,5 +1,9 @@
 # Bluetooth on Raspberry Pi / Linux
 
+**NOTE**: What we've discovered is that there isn't so much Bluetooth activity from automobiles. It's probably easiest to use WiFi example instead from the Senior Design lab or other room near a window facing the highway. WiFi range is up to about 20 meters, but can be longer.
+
+---
+
 The PyBluez package requires a Linux computer such as the Raspberry Pi for full functionality including BLE.
 
 ```sh
