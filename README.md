@@ -60,18 +60,15 @@ The
 is available on many Linux systems including the Raspberry Pi OS.
 We use this tool and parse its output in [wifi_scan.py](./wifi_scan.py) to detect WiFi hotspots, such as exist in modern automobiles.
 
+On the Raspberry Pi, over SSH or locally:
 ```sh
 sudo python3 wifi_scan.py ~/data -N 100
-# logs data to ~/data and scans 100 times
 ```
+That logs data to ~/data and scans 100 times for WiFi hotspots.
 
-copy this file to your laptop, perhaps using
-[SCP](https://en.wikipedia.org/wiki/Secure_copy_protocol):
+Copy the JSON file(s) created to your laptop, perhaps using
+[SCP](https://en.wikipedia.org/wiki/Secure_copy_protocol)  (note, this command is typed on your laptop connected to the Pi):
 
 ```sh
 scp pi@raspberrypi.local:~/data/*.json .
 ```
-
----
-
-Note, if you wish to measure/do something else with the Pi, please let us know and we'll discuss.
